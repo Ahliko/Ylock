@@ -1,7 +1,7 @@
 import socket as skt
 
 
-class Client:
+class TcpServer:
     def __init__(self):
         self.PORT = 17267
         self.NAME = "ESP"
