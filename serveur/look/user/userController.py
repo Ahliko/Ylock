@@ -4,7 +4,7 @@ import jwt
 import bcrypt
 from app import db, JWT_SECRETKEY
 from utilities.response import Response
-from userModel import User
+from user.userModel import User
 
 
 class LoginController:

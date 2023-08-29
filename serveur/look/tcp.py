@@ -33,13 +33,19 @@ class TcpServer:
                 "error": error
             }
             dumps = json.dumps(gotoserv)
+            print("oui")
+            print(lst)
             self.client.sendall(dumps.encode())
             data = self.client.recv(1000).decode()
 
             if data == "OK":
                 self.client.close()
                 self.connect = False
-                return lst
+                print(len(lst))
+                print(lst)
+                if len(lst) == 1:
+                    return json.loads(lst[0])
+                return
             else:
                 lst.append(data)
 

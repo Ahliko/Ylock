@@ -24,5 +24,6 @@ while True:
             "error": "200"
         }
         tcp.client.sendall(dumps(gotoserv).encode())
+    sleep(1)
     tcp.close()
     sleep(0.1)

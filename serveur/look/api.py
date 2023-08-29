@@ -3,6 +3,7 @@ from app import app
 from user.userController import LoginController, UserController
 from utilities.auth import Auth
 from tcp import TcpServer
+from time import sleep
 
 
 auth = Auth()
@@ -20,6 +21,7 @@ def status():
 @auth.middleware
 def lock():
     tcp.socket_to_server("lock", "POST", "200")
+    sleep(1)
     return {'status': True, 'msg': tcp.socket_to_server("", "GET", "200")}
 
 
@@ -27,6 +29,8 @@ def lock():
 @auth.middleware
 def unlock():
     tcp.socket_to_server("unlock", "POST", "200")
+    print("pass")
+    sleep(1)
     return {'status': True, 'msg': tcp.socket_to_server("", "GET", "200")}
 
 
