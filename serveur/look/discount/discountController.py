@@ -1,5 +1,5 @@
 from flask import request
-from .discountModel import db, Discount, DiscountSchema
+from serveur.look.discount.discountModel import db, Discount, DiscountSchema
 from serveur.look.utilities.response import Response
 
 

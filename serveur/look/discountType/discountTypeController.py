@@ -1,5 +1,5 @@
 from serveur.look.utilities.response import Response
-from discountTypeModel import DiscountType, DiscountTypeSchema
+from serveur.look.discountType.discountTypeModel import DiscountType, DiscountTypeSchema
 
 
 class DiscountTypeController:

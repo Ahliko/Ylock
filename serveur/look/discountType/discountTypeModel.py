@@ -1,5 +1,5 @@
 from marshmallow import fields, Schema
-from app import db
+from serveur.look.app import db
 
 
 class DiscountType(db.Model):
