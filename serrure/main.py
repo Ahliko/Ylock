@@ -1,8 +1,10 @@
+import reseau
 import tcp_receive as tcp
 from time import sleep
 import lock_unlock as lu
 from json import loads, dumps
 
+reseau.main()
 lock = lu.Lock()
 tcp = tcp.TcpReceive()
 status = "lock"

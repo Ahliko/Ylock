@@ -1,11 +1,12 @@
-from machine import Pin
+from machine import Pin, PWM
 
 
 class Lock:
     def __init__(self):
         self.locked = True
-        self.SG = Pin(5, Pin.OUT)
+        self.SG = PWM(Pin(5, mode=Pin.OUT))
         self.SG.freq(50)
+        self.SG.duty(0)
 
     def lock(self):
         if self.locked:

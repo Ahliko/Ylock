@@ -6,7 +6,7 @@ class TcpReceive:
     def __init__(self):
         self.PORT = 17267
         self.NAME = "ESP"
-        self.IP_SERVER = "127.0.0.1"  # TODO: change this to the server's IP address
+        self.IP_SERVER = "0.0.0.0"  # TODO: change this to the server's IP address
         self.client = None
         self.server = None
 
