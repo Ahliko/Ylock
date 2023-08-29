@@ -1,6 +1,6 @@
 import tcp_receive as tcp
 from time import sleep
-# import lock_unlock as lu
+import lock_unlock as lu
 from json import loads, dumps
 
 lock = lu.Lock()
