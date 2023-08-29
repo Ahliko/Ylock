@@ -11,15 +11,17 @@ auth = Auth()
 @app.route('/discount_api', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @auth.middleware
 def discountApi():
-    controller = DiscountController()
-    if request.method == 'POST':
-        return controller.insertNewData()
+    print("oui oui oui")
+    # controller = DiscountController()
+    # if request.method == 'POST':
+    #     return controller.insertNewData()
     if request.method == 'GET':
-        return controller.getData()
-    if request.method == 'PUT':
-        return controller.updateData()
-    if request.method == 'DELETE':
-        return controller.deleteData()
+        return {'status': True, 'msg': "oui oui oui"}
+        # return controller.getData()
+    # if request.method == 'PUT':
+    #     return controller.updateData()
+    # if request.method == 'DELETE':
+    #     return controller.deleteData()
     return {'status': False, 'msg': 'ínvalid http method'}
 
 

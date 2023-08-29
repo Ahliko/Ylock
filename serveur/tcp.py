@@ -1,11 +1,12 @@
 import socket as skt
+import json
 
 
 class TcpServer:
     def __init__(self):
         self.PORT = 17267
         self.NAME = "ESP"
-        self.IP_SERVER = "172.20.10.11"
+        self.IP_SERVER = "127.0.0.1"
         # self.IP_ADDR = skt.gethostbyname(skt.gethostname())
         self.name_client = {}
         self.derniere_action = None
@@ -14,19 +15,31 @@ class TcpServer:
         self.connect = False
         self.client = None
 
-    def socket_to_server(self, message):
+    def socket_to_server(self, message, method, error):
         if not self.connect:
             try:
-                client = skt.socket(skt.AF_INET, skt.SOCK_STREAM)
-                client.setsockopt(skt.SOL_SOCKET, skt.SO_REUSEADDR, 1)
-                client.connect((self.IP_SERVER, self.PORT))
+                self.client = skt.socket(skt.AF_INET, skt.SOCK_STREAM)
+                self.client.setsockopt(skt.SOL_SOCKET, skt.SO_REUSEADDR, 1)
+                self.client.connect((self.IP_SERVER, self.PORT))
                 self.connect = True
             except OSError:
                 raise ConnectionRefusedError("Impossible de se connecter")
-        self.client.sendall(message.encode())
+        gotoserv = {
+            "method": method,
+            "message": message,
+            "error": error
+        }
+        dumps = json.dumps(gotoserv)
+        print(dumps)
+        self.client.sendall(dumps.encode())
         data = self.client.recv(1000).decode()
         if data == "OK":
             self.client.close()
             self.connect = False
             return
         return data
+
+
+if __name__ == "__main__":
+    tcp = TcpServer()
+    tcp.socket_to_server("lock", "GET", "200")
