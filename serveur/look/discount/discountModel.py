@@ -1,4 +1,4 @@
-from serveur.look.app import db
+from app import db
 from marshmallow import fields, Schema
 from sqlalchemy.dialects import postgresql
 

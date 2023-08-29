@@ -1,6 +1,6 @@
 from flask import request
-from serveur.look.discount.discountModel import db, Discount, DiscountSchema
-from serveur.look.utilities.response import Response
+from discount.discountModel import db, Discount, DiscountSchema
+from utilities.response import Response
 
 
 class DiscountController:
