@@ -12,7 +12,7 @@ class DiscountTypeController:
             data = self.dataHandler.getData()
             return Response.make(True, data=data)
         except:
-            return Response.make(False, 'Eror while trying to retrieve data')
+            return Response.make(False, 'Error while trying to retrieve data')
 
 
 class DataHandlerImpl:

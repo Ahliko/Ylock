@@ -12,7 +12,7 @@ class DiscountController:
             data = self.dataHandler.grabData()
             return Response.make(status=True, data=data)
         except:
-            return Response.make('Eror while trying to retrieve data')
+            return Response.make('Error while trying to retrieve data')
 
     def insertNewData(self):
         try:
