@@ -3,7 +3,7 @@ from time import sleep
 # import lock_unlock as lu
 from json import loads, dumps
 
-# lock = lu.Lock()
+lock = lu.Lock()
 tcp = tcp.TcpReceive()
 status = "lock"
 
@@ -12,10 +12,10 @@ while True:
     if data["method"] == "POST":
         action = tcp.action(data["message"])
         if action == 0:
-            # lock.lock()
+            lock.lock()
             status = "lock"
         elif action == 1:
-            # lock.unlock()
+            lock.unlock()
             status = "unlock"
     elif data["method"] == "GET":
         gotoserv = {
