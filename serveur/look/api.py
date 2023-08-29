@@ -1,40 +1,33 @@
 from flask import request
 from app import app
-from discount.discountController import DiscountController
-from discountType.discountTypeController import DiscountTypeController
 from user.userController import LoginController, UserController
 from utilities.auth import Auth
+from tcp import TcpServer
+
 
 auth = Auth()
+tcp = TcpServer()
 
 
-@app.route('/discount_api', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.get('/status')
 @auth.middleware
-def discountApi():
-    print("oui oui oui")
-    # controller = DiscountController()
-    # if request.method == 'POST':
-    #     return controller.insertNewData()
-    if request.method == 'GET':
-        return {'status': True, 'msg': "oui oui oui"}
-        # return controller.getData()
-    # if request.method == 'PUT':
-    #     return controller.updateData()
-    # if request.method == 'DELETE':
-    #     return controller.deleteData()
-    return {'status': False, 'msg': 'ínvalid http method'}
+def status():
+    return {'status': True, 'msg': tcp.socket_to_server("", "GET", "200")}
 
 
-@app.post('/discount_api_search')
+
+@app.get('/lock')
 @auth.middleware
-def discountApiSearch():
-    return DiscountController().searchSingleData()
+def lock():
+    tcp.socket_to_server("lock", "POST", "200")
+    return {'status': True, 'msg': tcp.socket_to_server("", "GET", "200")}
 
 
-@app.get('/discount_type_api')
+@app.get('/unlock')
 @auth.middleware
-def discountTypeApi():
-    return DiscountTypeController().getData()
+def unlock():
+    tcp.socket_to_server("unlock", "POST", "200")
+    return {'status': True, 'msg': tcp.socket_to_server("", "GET", "200")}
 
 
 @app.post('/login')
