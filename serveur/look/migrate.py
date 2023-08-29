@@ -1,3 +1,3 @@
-from application.user.userModel import User
-from application.discount.discountModel import Discount
-from application.discountType.discountTypeModel import DiscountType
+from user.userModel import User
+from discount.discountModel import Discount
+from discountType.discountTypeModel import DiscountType

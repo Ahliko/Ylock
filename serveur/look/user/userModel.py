@@ -1,4 +1,4 @@
-from app import db
+from serveur.look.app import db
 
 
 class User(db.Model):
