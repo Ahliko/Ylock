@@ -7,7 +7,7 @@ class TcpServer:
     def __init__(self):
         self.PORT = 17267
         self.NAME = "ESP"
-        self.IP_SERVER = "172.20.10.2"
+        self.IP_SERVER = "172.20.10.3"
         # self.IP_ADDR = skt.gethostbyname(skt.gethostname())
         self.name_client = {}
         self.derniere_action = None

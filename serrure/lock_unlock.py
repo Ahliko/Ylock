@@ -11,11 +11,11 @@ class Lock:
     def lock(self):
         if self.locked:
             return
-        self.SG.duty(1023)
+        self.SG.duty(70)
         self.locked = not self.locked
 
     def unlock(self):
         if not self.locked:
             return
-        self.SG.duty(0)
+        self.SG.duty(20)
         self.locked = not self.locked
